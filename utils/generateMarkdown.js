@@ -289,9 +289,19 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   if(license==="No License"){
-    return `No License has been assigned to this project.`;
+    return "";
   }
-  return `This project uses the ${renderLicenseBadge(license)} license, you can find more information here: ${renderLicenseLink(license)}.`
+  
+  return `## <span style="color:#FFD23F">License</span>\n
+  This project uses the ${renderLicenseBadge(license)} license, you can find more information here: ${renderLicenseLink(license)}.`
+ }
+
+ // Render License TOC
+ function renderLicenseTOC(license){
+  if(license === "No License"){
+    return "";
+  }
+  return `- [License](#license)\r`
  }
 
 // TODO: Create a function to generate markdown for README
@@ -312,7 +322,7 @@ function generateMarkdown(data) {
   - [Contributing](#how-to-contribute)
   - [Tests](#tests)
   - [Questions](#questions)
-  - [License](#license)\r
+  ${renderLicenseTOC(data.pLicense)}
   ---
   ## <span style="color:#FFD23F">Installation Instructions</span>\n
   ${data.pInstructions}\n
@@ -330,7 +340,7 @@ function generateMarkdown(data) {
   Github: [@${split[0]}](https://www.github.com/${split[0]})\n
   Email: ${split[1]}\n
   ---
-  ## <span style="color:#FFD23F">License</span>\n
+  
   ${renderLicenseSection(data.pLicense)}
 `;
 }
