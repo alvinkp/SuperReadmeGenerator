@@ -324,5 +324,4 @@ function generateMarkdown(data) {
 }
 
 
-// module.exports = generateMarkdown;
-exports.generateMarkdown = generateMarkdown;
+module.exports = generateMarkdown;

@@ -32,7 +32,7 @@ function init() {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            writeToFile("myReadmeExample.md", generateMD.generateMarkdown(answers));
+            writeToFile("myReadmeExample.md", generateMD(answers));
         })
 }
 
